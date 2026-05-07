@@ -1,19 +1,66 @@
 # NutriBin Backend
 
-Backend service for the NutriBin project.
+Backend service for NutriBin — a smart compost monitoring system that uses IoT + ML + rule-based intelligence to track compost conditions, detect anomalies, and generate real-time insights.
 
-## Stack
+## Overview
+
+NutriBin Backend processes sensor data and converts it into actionable intelligence:
+
+- Tracks compost environmental conditions in real time
+- Detects abnormal sensor behavior (hardware or process issues)
+- Predicts compost stage progression
+- Estimates remaining composting time using hybrid logic
+
+
+## Tech Stack
+
 - Python 3.11+
 - FastAPI
-- SQLite
 - SQLAlchemy
+- SQLite
+- ML: Isolation Forest (Anomaly Detection)
 
-## Run (local)
-1. Create virtual env and install deps:
-   - `python -m venv .venv`
-   - `.venv\Scripts\Activate.ps1`
-   - `pip install -r requirements.txt`
-2. Start server:
-   - `uvicorn app.main:app --reload`
-3. Open docs:
-   - `http://127.0.0.1:8000/docs`
+
+## Core Modules
+
+- **Stage Classification Engine** → rule-based compost stage detection (Start / Curing / Ready)
+- **Time Prediction Engine** → hybrid model using trend analysis + heuristics
+- **Anomaly Detection Engine** → Isolation Forest for detecting abnormal sensor patterns
+- **Backend API Layer** → FastAPI-based real-time data handling
+
+
+## Run Locally
+
+### 1. Create virtual environment
+```bash
+python -m venv .venv
+```
+
+### 2. Activate environment
+```bash
+.venv\Scripts\Activate.ps1
+```
+
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Start server
+```bash
+uvicorn app.main:app --reload
+```
+
+### 5. Open API docs
+```
+http://127.0.0.1:8000/docs
+```
+
+## Project Goal
+
+To build a real-time intelligent compost monitoring backend that can:
+
+- Reduce manual compost monitoring effort
+- Detect system or environmental anomalies early
+- Provide predictive insights for compost completion
+- Support scalable IoT-based environmental tracking systems
